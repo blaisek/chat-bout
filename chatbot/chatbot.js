@@ -57,14 +57,19 @@ module.exports = {
                 },
             },
         };
-        
-      let responses = await sessionClient
+      try {
+
+        let responses = await sessionClient
                 .detectIntent(request);
                 
-
         responses = await self.handleAction(responses);
         
         return responses; 
+
+      }  catch(error) {
+        console.log('error: ', error.message);
+      }
+      
 
     },
 
