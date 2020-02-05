@@ -19,6 +19,8 @@ module.exports = {
 
     textQuery: async function(text,userID,parameters = {}){
         let sessionPath = sessionClient.sessionPath(projectID,sessionID + userID)
+        console.log('[chatbot]userID:',userID);
+        
         let self = module.exports;
         const request = {
             session: sessionPath,
@@ -45,9 +47,12 @@ module.exports = {
     },
 
     eventQuery: async function(event,userID,parameters = {}){ try{
-        let sessionPath = sessionClient.sessionPath(projectID,sessionID + userID)
-        console.log('sessionPath[chatbot]',sessionPath);
+        let sessionPath = sessionClient.sessionPath(projectID,sessionID + userID);
         
+        console.log('sessionPath[chatbot]',sessionPath);
+        console.log('userID[chatbot]',userID);
+        console.log('projectID[chatbot]',projectID);
+        console.log('sessionID[chatbot]',sessionID)
         
         
         let self = module.exports;
@@ -71,7 +76,7 @@ module.exports = {
         
         return responses; 
     } catch(e){console.error('error:',e);
-                console.log('error ?');
+                console.log('error [chatbot]');
     }
     
     
