@@ -1,11 +1,10 @@
 'use strict';
 const dialogflow = require('dialogflow');
-const uuid = require('uuid');
 const config = require('../config/keys');
 const structJson = require('structjson')
 
 const projectID = config.googleProjectID;
-// const sessionID = config.dialogFlowSessionID;
+const sessionID = config.dialogFlowSessionID;
 const languageCode = config.dialogFlowSessionLanguageCode;
 
 const credentials = {
@@ -14,7 +13,6 @@ const credentials = {
 };
 
 const sessionClient = new dialogflow.SessionsClient({projectID, credentials});
-const sessionID = uuid.v4()
 
 module.exports = {
 
@@ -47,7 +45,9 @@ module.exports = {
 
     },
 
-    eventQuery: async function(event,parameters = {}){ try{
+    eventQuery: async function(event,parameters = {}){ 
+        
+        try{
         let sessionPath = sessionClient.sessionPath(projectID,sessionID);
 
         let self = module.exports;
@@ -70,8 +70,8 @@ module.exports = {
         responses = await self.handleAction(responses);
         
         return responses; 
-    } catch(e){console.error('error:',e);
-                console.log('error [chatbot]:',e);
+    } catch(e){
+        console.error('error [chatbot]:',e);
     }
     
     
