@@ -19,8 +19,7 @@ module.exports = app => {
         try{
             res.send(responses[0].queryResult);
         } catch(error){
-            console.error(error);
-            
+            console.error(error)     
         }
         
     });
