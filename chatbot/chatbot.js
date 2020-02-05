@@ -1,10 +1,11 @@
 'use strict';
 const dialogflow = require('dialogflow');
+const uuid = require('uuid');
 const config = require('../config/keys');
 const structJson = require('structjson')
 
 const projectID = config.googleProjectID;
-const sessionID = config.dialogFlowSessionID;
+// const sessionID = config.dialogFlowSessionID;
 const languageCode = config.dialogFlowSessionLanguageCode;
 
 const credentials = {
@@ -13,11 +14,11 @@ const credentials = {
 };
 
 const sessionClient = new dialogflow.SessionsClient({projectID, credentials});
-
+const sessionID = uuid.v4()
 
 module.exports = {
 
-    textQuery: async function(text,userID,parameters = {}){
+    textQuery: async function(text,parameters = {}){
         let sessionPath = sessionClient.sessionPath(projectID,sessionID)
        
         
@@ -46,7 +47,7 @@ module.exports = {
 
     },
 
-    eventQuery: async function(event,userID,parameters = {}){ try{
+    eventQuery: async function(event,parameters = {}){ try{
         let sessionPath = sessionClient.sessionPath(projectID,sessionID);
 
         let self = module.exports;
