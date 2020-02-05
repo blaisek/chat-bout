@@ -18,7 +18,7 @@ const sessionClient = new dialogflow.SessionsClient({projectID, credentials});
 module.exports = {
 
     textQuery: async function(text,userID,parameters = {}){
-        let sessionPath = sessionClient.sessionPath(projectID,sessionID )
+        let sessionPath = sessionClient.sessionPath(projectID,sessionID + userID)
         let self = module.exports;
         const request = {
             session: sessionPath,
@@ -44,8 +44,8 @@ module.exports = {
 
     },
 
-    eventQuery: async function(event,userID,parameters = {}){
-        let sessionPath = sessionClient.sessionPath(projectID,sessionID )
+    eventQuery: async function(event,userID,parameters = {}){ try{
+        let sessionPath = sessionClient.sessionPath(projectID,sessionID + userID)
         
         
         
@@ -69,7 +69,10 @@ module.exports = {
         responses = await self.handleAction(responses);
         
         return responses; 
-
+    } catch(e){console.error('error:',e);
+    }
+    console.log('error ?');
+    
     },
 
     handleAction: function(responses){
