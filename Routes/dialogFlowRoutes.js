@@ -15,6 +15,7 @@ module.exports = app => {
     });
 
     app.post('/api/df_event_query', async (req, res) => {
+        // responses undefined
         let responses = await chatbot.eventQuery(req.body.event, req.body.userID, req.body.parameters);
             console.log('responses [dialogflowRoutes]',responses);
             
