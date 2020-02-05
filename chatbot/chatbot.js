@@ -46,6 +46,7 @@ module.exports = {
 
     eventQuery: async function(event,userID,parameters = {}){ try{
         let sessionPath = sessionClient.sessionPath(projectID,sessionID + userID)
+        console.log('sessionPath[chatbot]',sessionPath);
         
         
         
@@ -70,8 +71,9 @@ module.exports = {
         
         return responses; 
     } catch(e){console.error('error:',e);
+                console.log('error ?');
     }
-    console.log('error ?');
+    
     
     },
 
