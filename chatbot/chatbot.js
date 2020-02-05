@@ -70,7 +70,8 @@ module.exports = {
         
         return responses; 
     } catch (error){
-        console.error(error)
+        console.error('erreur:',error);
+        
     }
 
     },
