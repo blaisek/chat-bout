@@ -18,8 +18,8 @@ const sessionClient = new dialogflow.SessionsClient({projectID, credentials});
 module.exports = {
 
     textQuery: async function(text,userID,parameters = {}){
-        let sessionPath = sessionClient.sessionPath(projectID,sessionID + userID)
-        console.log('[chatbot]userID:',userID);
+        let sessionPath = sessionClient.sessionPath(projectID,sessionID)
+       
         
         let self = module.exports;
         const request = {
@@ -47,14 +47,8 @@ module.exports = {
     },
 
     eventQuery: async function(event,userID,parameters = {}){ try{
-        let sessionPath = sessionClient.sessionPath(projectID,sessionID + userID);
+        let sessionPath = sessionClient.sessionPath(projectID,sessionID);
 
-        console.log('sessionPath[chatbot]',sessionPath);
-        console.log('userID[chatbot]',userID);
-        console.log('projectID[chatbot]',projectID);
-        console.log('sessionID[chatbot]',sessionID)
-        
-        
         let self = module.exports;
         const request = {
             session: sessionPath,
