@@ -71,7 +71,7 @@ module.exports = {
         
         return responses; 
     } catch(e){
-        console.error('error [chatbot]:',e);
+        console.error('error [chatbot.js]:',e);
     }
     
     
